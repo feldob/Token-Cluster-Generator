@@ -34,7 +34,7 @@ For each created cluster, there will be three files:
 Example
 -------
 
-For a frame size of 1000 pixels, a fixed amount of 10 tokens of sizes between 300 and 700 pixels, and randomly selected cluster density between 0.01 and 0.2, the three files are:
+For a frame size of 1000 pixels, a fixed amount of 10 tokens of sizes between 300 and 700 pixels, and randomly selected cluster density between 0.01 and 0.2, the three files could look as in:
 
 * [image](https://github.com/feldob/Token-Cluster-Generator/blob/master/instances/1.png)
 * [clusterImage](https://github.com/feldob/Token-Cluster-Generator/blob/master/instances/1_cluster.png)
