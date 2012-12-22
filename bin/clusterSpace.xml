@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<i:DesignSpace id="clusterCreator-0.1" xmlns:i="http://TheInPUT.org/DesignSpace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://TheInPUT.org/DesignSpace http://TheInput.org/DesignSpace.xsd ">
+	<i:SParam id="Folder" type="String" fixed="instances" />
+	<i:NParam id="FrameSize" type="integer" fixed="1000" />
+	<i:NParam id="AmountInstances" type="integer" fixed="2" />
+	<i:NParam id="AmountTokens" type="integer" inclMin="4" inclMax="10" />
+	<i:NParam id="TokenSize" type="integer" inclMin="300" inclMax="700" />
+	<i:NParam id="ClusterDensity" type="double" inclMin=".01" inclMax=".2"/>
+</i:DesignSpace>
