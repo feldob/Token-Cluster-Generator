@@ -1,7 +1,7 @@
 Token-Cluster-Generator
 =======================
 
-A customizable cluster generator which randomly prints token of different sizes on a plane.
+A customizable cluster generator which randomly prints tokens of different sizes on a plane.
 It suggests clusterings for each created instance and can thus be used for the investigation of clustering algorithms.
 
 Requirements
@@ -20,11 +20,11 @@ The generator uses [InPUT](https://github.com/feldob/InPUT) and can be customize
 * Folder : name of the folder where the files are saved
 * FrameSize : the edge size of the (squared) pane
 * AmountInstances : the amount of instances that should be created
-* AmountTokens : the amount of tokens that should be placed randomly on the plane
+* AmountTokens : the amount of tokens that should randomly be placed on the plane
 * TokenSize : the size of the created tokens
-* ClusterDensity : the assigned density for a cluster
+* ClusterDensity : the assigned cluster density
 
-For each created cluster, there will be three created files:
+For each created cluster, there will be three files:
 
 * *.png is the original image, containing the tokens
 * *_cluster.png is the image containing the clusters, using *.png as a template
