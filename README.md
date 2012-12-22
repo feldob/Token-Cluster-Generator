@@ -8,7 +8,7 @@ Requirements
 ------------
 JRE 6 ++
 
-Token-Cluster-Generator
+Generate Clusters
 -----------------------
 
 Start the generator algorithm by calling:
