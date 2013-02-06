@@ -30,6 +30,12 @@ For each created cluster, there will be three files:
 * *_cluster.png is the image containing the clusters, using *.png as a template
 * *.txt contains the suggested clustering coordinates
 
+From version 0.2 on
+-----------------------
+There is a new feature. Users can now put all their png files into the defined folder, and based on the fixed property of ExtractClustersForPicturesInFolder, the code will:
+
+* true : not create new random instances and thereby ignore the AmountInstaces and AmountTokens entries. It will create the clusters for all *.png files in the defined folder.
+* false : create new random instances, as described above.
 
 Example
 -------
