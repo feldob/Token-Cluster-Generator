@@ -44,6 +44,7 @@ import java.util.Random;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -159,6 +160,41 @@ public class ClusterInstanceCreator {
 																	// config
 		File folder = createFolder((String) config.next("Folder")); // where to
 																	// store?
+		boolean userDefinedPNG = config
+				.next("ExtractClustersForPicturesInFolder"); // create random
+																// figures or
+																// user defined?
+
+		if (userDefinedPNG) {
+			createClustersFromExistingInstances(config, folder);
+		} else {
+			createClustersFromRandomInstances(config, folder);
+		}
+		System.out.println();
+		System.out
+				.println("All clusters have successfully been created and can be found in folder:\n");
+		System.out.println("\t" + folder.getAbsolutePath());
+		System.out.println();
+	}
+
+	private void createClustersFromExistingInstances(IDesignSpace config,
+			File folder) throws InPUTException, IOException {
+		System.out.println("\nStarting cluster creation...\n");
+		int counter = 0;
+		BufferedImage original;
+		for (File file : folder.listFiles()) {
+			if (file.getName().toLowerCase().endsWith(".png")) {
+				counter++;
+				System.out.print("\tcluster " + counter + " ... ");
+				original = ImageIO.read(file);
+				createClustering(original, folder, file.getName().substring(0, file.getName().length()-4), config);
+				System.out.println("done!");
+			}
+		}
+	}
+
+	private void createClustersFromRandomInstances(IDesignSpace config,
+			File folder) throws InPUTException, IOException {
 		int amountInstances = config.next("AmountInstances"); // how many
 																// instances?
 
@@ -167,20 +203,15 @@ public class ClusterInstanceCreator {
 		System.out.println("\nStarting cluster creation...\n");
 		BufferedImage original;
 		for (int i = 1; i <= amountInstances; i++) {
-			System.out.print("\tcluster " + i + "/" + amountInstances
-					+ " ... ");
+			System.out
+					.print("\tcluster " + i + "/" + amountInstances + " ... ");
 			frame = initFrame();
 			original = createInstance(folder, i, frame, config, rng);
-			createClustering(original, folder, i, config);
+			createClustering(original, folder, i + "", config);
 
 			frame.dispose();
 			System.out.println("done!");
 		}
-		System.out.println();
-		System.out
-				.println("All clusters have successfully been created and can be found in folder:\n");
-		System.out.println("\t" + folder.getAbsolutePath());
-		System.out.println();
 	}
 
 	private File createFolder(String folderName) {
@@ -194,8 +225,9 @@ public class ClusterInstanceCreator {
 			InterruptedException, IOException {
 		if (args == null || args.length == 0) {
 			new ClusterInstanceCreator();
-		}else if (args[0].startsWith("-v") || args[0].startsWith("--v")){
-			System.out.println("\nClusterInstanceCreator version 0.1 (Requires Java 1.6++)\nauthor: Felix Dobslaw\nopen source under MIT license\n");
+		} else if (args[0].startsWith("-v") || args[0].startsWith("--v")) {
+			System.out
+					.println("\nClusterInstanceCreator version 0.1 (Requires Java 1.6++)\nauthor: Felix Dobslaw\nopen source under MIT license\n");
 		}
 	}
 
@@ -256,7 +288,7 @@ public class ClusterInstanceCreator {
 		}
 	}
 
-	private static void export(BufferedImage biNew, File folder, int index) {
+	private static void export(BufferedImage biNew, File folder, String index) {
 		Graphics g = biNew.createGraphics();
 		g.dispose();
 		try {
@@ -266,7 +298,7 @@ public class ClusterInstanceCreator {
 		}
 	}
 
-	private void createClustering(BufferedImage bi, File folder, int index,
+	private void createClustering(BufferedImage bi, File folder, String name,
 			IDesignSpace space) throws IOException, InPUTException {
 
 		ClusterInfo clusters = initClusters(bi);
@@ -292,15 +324,15 @@ public class ClusterInstanceCreator {
 			entriesToBeDrawn = decideEntriesToBeDrawn(points,
 					amountEntriesToBeDrawn);
 			Collections.sort(entriesToBeDrawn);
-			draw(folder, index, entriesToBeDrawn, clusters, i, newBi, bi, b);
+			draw(folder, name, entriesToBeDrawn, clusters, i, newBi, bi, b);
 		}
 
 		BufferedWriter writer = new BufferedWriter(new FileWriter(
-				folder.getAbsolutePath() + File.separator + index + ".txt"));
+				folder.getAbsolutePath() + File.separator + name + ".txt"));
 		writer.append(b);
 		writer.close();
 
-		export(newBi, folder, index);
+		export(newBi, folder, name);
 	}
 
 	private static String randomCharacter(Random rng) {
@@ -326,7 +358,7 @@ public class ClusterInstanceCreator {
 		return bi;
 	}
 
-	private void draw(File folder, int index, List<Integer> entriesToBeDrawn,
+	private void draw(File folder, String index, List<Integer> entriesToBeDrawn,
 			ClusterInfo clusters, int clusterId, BufferedImage newBi,
 			BufferedImage bi, StringBuilder b) throws IOException {
 
