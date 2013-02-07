@@ -6,16 +6,16 @@ It suggests clusterings for each created instance and can thus be used for the i
 
 Requirements
 ------------
-JRE 6 ++
+JRE 7 ++
 
 Generate Clusters
 -----------------------
 
 Start the generator algorithm by calling:
 
-	java -jar tcg-0.1.jar
+	java -jar tcg-*.jar
 
-The generator uses [InPUT](https://github.com/feldob/InPUT) and can be customized by adjusting the parameters in clusterSpace.xml:
+, where \* is the version of the executable ( e.g. 0.2). The generator uses [InPUT](https://github.com/feldob/InPUT) and can be customized by adjusting the parameters in clusterSpace.xml:
 
 * Folder : name of the folder where the files are saved
 * FrameSize : the edge size of the (squared) pane
