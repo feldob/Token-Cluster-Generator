@@ -2,7 +2,6 @@
 <i:DesignSpace id="clusterCreator-0.1" xmlns:i="http://TheInPUT.org/DesignSpace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://TheInPUT.org/DesignSpace http://TheInput.org/DesignSpace.xsd ">
-	<i:NParam id="ExtractClustersForPicturesInFolder" type="boolean" fixed="false" />
 	<i:SParam id="Folder" type="String" fixed="instances" />
 	<i:NParam id="FrameSize" type="integer" fixed="1000" />
 	<i:NParam id="AmountInstances" type="integer" fixed="2" />
