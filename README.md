@@ -70,7 +70,7 @@ The size of the original PNGs can be arbitrary. Each non-white area is considere
 
 Make sure to not have files '*.txt' or '*_cluster.png' in FOLDER, otherwise the program will return an error. In this Mode 2 the parameters AmountInstaces and AmountTokens in clusterSpace.xml are ignored.
 
-# Summery of files:
+# Summary of files:
 
 For each created cluster, there will be three files:
 
